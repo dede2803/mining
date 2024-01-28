@@ -199,3 +199,18 @@ system("xdg-open https://");
 
 //PROSES BUILD login
 $veri=verif($ve,$to,array_merge(head(),array("referer: https://iqfaucet.com/index.php")));
+
+
+//save image
+function save_image($inPath,$outPath)
+{ //Download images from remote server
+    $in=    fopen($inPath, "rb");
+    $out=   fopen($outPath, "wb");
+    while ($chunk = fread($in,8192))
+    {
+        fwrite($out, $chunk, 8192);
+    }
+    fclose($in);
+    fclose($out);
+}
+save_image($imgCapthcha,'image.jpg');
